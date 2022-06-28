@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shopping.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Shopping
 {
@@ -24,6 +26,9 @@ namespace Shopping
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            var connection = @"Server=DESKTOP-CUFGA9D;Database=Shopping1;Trusted_Connection=true;ConnectRetryCount=0";
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
