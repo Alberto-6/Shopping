@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Shopping.Data;
 using Shopping.Data.Entities;
+using Shopping.Models;
 
 namespace Shopping.Controllers
 {
@@ -50,8 +51,6 @@ namespace Shopping.Controllers
         }
 
         // POST: Countries/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] Country country)
@@ -85,8 +84,73 @@ namespace Shopping.Controllers
 
     }
 
-    // GET: Countries/Edit/5
-    public async Task<IActionResult> Edit(int? id)
+        // GET: Countries/Create
+        public async Task<IActionResult> AddState(int? Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+
+            Country country = await _context.Countries.FindAsync(Id);
+            if(country == null) 
+            {
+                return NotFound();
+            }
+
+            StateViewModel model = new()
+            {
+                CountryId = country.Id,
+            };
+
+
+            return View(model);
+        }
+
+        // POST: Countries/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddState([Bind("Id,Name")] StateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    State state = new ()
+                    {
+                        Cities = new List<City>(),
+                        Country = await _context.Countries.FindAsync(model.CountryId),
+                        nameof = model.Name,
+
+                    };
+                    _context.Add(state);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Details), new { Id = model.CountryId });
+                }
+                catch (DbUpdateException dbUpdateException)
+                {
+                    if (dbUpdateException.InnerException.Message.Contains("duplicate"))
+                    {
+                        ModelState.AddModelError(string.Empty, "Ya existe un departamento/estado con el mismo nombre en este pais.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    ModelState.AddModelError(string.Empty, exception.Message);
+                }
+            }
+            return View(model);
+
+
+        }
+
+
+        // GET: Countries/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
