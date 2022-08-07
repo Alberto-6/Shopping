@@ -10,12 +10,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shopping.Data;
 using Microsoft.EntityFrameworkCore;
+using Shopping.Helpers;
+using Shopping.Data.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Shopping
 {
-    public class Startup
+    public class SeedData
     {
-        public Startup(IConfiguration configuration)
+        public SeedData(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -29,7 +32,26 @@ namespace Shopping
 
             var connection = @"Server=DESKTOP-CUFGA9D;Database=Shopping1;Trusted_Connection=true;ConnectRetryCount=0";
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connection));
+
+
+            //TODO>:Make Stronger password
+            services.AddIdentity<User, IdentityRole>(cfg =>
+            {
+                cfg.User.RequireUniqueEmail = true;
+                cfg.Password.RequireDigit = false;
+                cfg.Password.RequiredUniqueChars = 0;
+                cfg.Password.RequireLowercase = false;
+                cfg.Password.RequireNonAlphanumeric = false;
+                cfg.Password.RequireUppercase = false;
+            }).AddEntityFrameworkStores<DataContext>();
+
+
+            services.AddTransient<SeedDb>();
+            services.AddScoped<IUserHelper, UserHelper>();
+
         }
+
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -50,6 +72,8 @@ namespace Shopping
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
