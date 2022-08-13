@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Shopping.Data;
 using Shopping.Data.Entities;
+using Shopping.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,15 @@ namespace Shopping.Helpers
         private readonly DataContext _context;
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<User> _signInManager;
 
-
-        public UserHelper(DataContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        public UserHelper(DataContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> 
+            signInManager)
         {
-           this._context = context;
-           this. _userManager = userManager;
-           this._roleManager = roleManager;
+           _context = context;
+           _userManager = userManager;
+           _roleManager = roleManager;
+           _signInManager = signInManager;
         }
 
         public DataContext Context { get; }
@@ -63,6 +66,16 @@ namespace Shopping.Helpers
         public async Task<bool> IsUserInRoleAsync(User user, string roleName)
         {
             return await _userManager.IsInRoleAsync(user, roleName);
+        }
+
+        public async Task<SignInResult> LoginAsync(LoginViewModel model)
+        {
+            return await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, false);
+        }
+
+        public async Task LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
         }
     }
 }

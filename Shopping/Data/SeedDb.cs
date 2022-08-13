@@ -25,7 +25,8 @@ namespace Shopping.Data
             await CheckCategoriesAsync();
             await CheckCountriesAsync();
             await CheckRolesAsync();
-            await CheckUserAsync("1010", "Juan", "Zuluaga", "zulu@yopmail.com", "322 311 4620", "Calle Luna Calle Sol", UserType.Admin);
+            await CheckUserAsync("1010", "Juan", "Moreno", "juanalbertomoreno0106@gmail.com", "322 311 4620", "Calle Diamante", UserType.Admin);
+            await CheckUserAsync("1010", "Jose", "Rivas", "rolo@gmail.com", "322 311 4620", "Calle Luna", UserType.Admin);
         }
 
         private async Task<User> CheckUserAsync(

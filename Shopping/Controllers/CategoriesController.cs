@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shopping.Data;
 using Shopping.Data.Entities;
@@ -9,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace Shopping.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : Controller
     {
         private readonly DataContext _context;
@@ -23,6 +26,7 @@ namespace Shopping.Controllers
             return View(await _context.Categories.ToListAsync());
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -115,6 +119,7 @@ namespace Shopping.Controllers
             return View(category);
         }
 
+        
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,7 +138,6 @@ namespace Shopping.Controllers
         }
 
         // POST: Countries/Delete/5
-        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
