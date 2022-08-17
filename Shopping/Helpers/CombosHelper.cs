@@ -31,10 +31,7 @@ namespace Shopping.Helpers
             return list;
         }
 
-        public async Task<IEnumerable<SelectListItem>> GetComboCitiesAsync(int stateId)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public async Task<IEnumerable<SelectListItem>> GetComboCountriesAsync()
         {

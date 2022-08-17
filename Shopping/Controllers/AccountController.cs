@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shopping.Data;
+using Shopping.Data.Entities;
+using Shopping.Enums;
 using Shopping.Helpers;
 using Shopping.Models;
 using System;
@@ -11,10 +14,16 @@ namespace Shopping.Controllers
     public class AccountController : Controller
     {
         private readonly IUserHelper _userHelper;
+        private readonly DataContext _context;
+        private readonly ICombosHelper _combosHelper;
+        private readonly IBlobHelper _blobHelper;
 
-        public AccountController(IUserHelper userHelper) 
+        public AccountController(IUserHelper userHelper, DataContext context, ICombosHelper combosHelper, IBlobHelper blobHelper) 
         {
             _userHelper = userHelper;
+            _context = context;
+            _combosHelper = combosHelper;
+            _blobHelper = blobHelper;
         }
 
         public IActionResult Login()
@@ -51,5 +60,55 @@ namespace Shopping.Controllers
         }
 
 
+        public async Task<IActionResult> Register()
+        {
+            AddUserViewModel model = new AddUserViewModel
+            {
+                Id = Guid.Empty.ToString(),
+                Countries = await _combosHelper.GetComboCountriesAsync(),
+                UserType = UserType.User,
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(AddUserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Guid imageId = Guid.Empty;
+
+                if (model.ImageFile != null)
+                {
+                    imageId = await _blobHelper.UploadBlobAsync(model.ImageFile, "users");
+                }
+
+                model.ImageId = imageId;
+                User user = await _userHelper.AddUserAsync(model);
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Este correo ya está siendo usado.");
+                    return View(model);
+                }
+
+                LoginViewModel loginViewModel = new LoginViewModel
+                {
+                    Password = model.Password,
+                    RememberMe = false,
+                    Username = model.Username
+                };
+
+                var result2 = await _userHelper.LoginAsync(loginViewModel);
+
+                if (result2.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View(model);
+        }
     }
 }

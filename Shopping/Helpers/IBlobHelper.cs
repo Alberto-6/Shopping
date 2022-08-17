@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shopping.Helpers
 {
-    interface IBlobHelper
+    public interface IBlobHelper
     {
         Task<Guid> UploadBlobAsync(IFormFile file, string containerName);
 
