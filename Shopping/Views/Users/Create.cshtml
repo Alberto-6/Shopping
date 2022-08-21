@@ -4,13 +4,13 @@
     ViewData["Title"] = "Register";
 }
 
-<h2>Registrar</h2>
+<h2>Crear</h2>
 
-<h4>Usuario</h4>
+<h4>Administrador</h4>
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Register" enctype="multipart/form-data">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="UserType" />
@@ -44,7 +44,7 @@
             <partial name="_User" />
 
             <div class="form-group mt-2">
-                <input type="submit" value="Registrar" class="btn btn-outline-primary" />
+                <input type="submit" value="Crear" class="btn btn-outline-primary" />
             </div>
         </form>
     </div>
@@ -57,7 +57,7 @@
             $("#CountryId").change(function () {
                 debugger;
                 $("#StateId").empty();
-                $("#StateId").append('<option value="0">[Selecciona un departamento/estado...]</option>');
+                $("#StateId").append('<option value="0">[Selecciona un Departamento / Estado...]</option>');
                 $("#CityId").empty();
                 $("#CityId").append('<option value="0">[Selecciona una ciudad...]</option>');
                 $.ajax({
@@ -104,3 +104,4 @@
         });
     </script>
 }
+

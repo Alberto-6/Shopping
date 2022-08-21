@@ -50,20 +50,16 @@ namespace Shopping.Models
 
         [Display(Name = "País")]
         [Range(1, int.MaxValue, ErrorMessage = "Debes de seleccionar un país.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int CountryId { get; set; }
 
         public IEnumerable<SelectListItem> Countries { get; set; }
 
         [Display(Name = "Departmento/Estado")]
-        [Range(1, int.MaxValue, ErrorMessage = "Debes de seleccionar un departamento/estado.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int StateId { get; set; }
 
         public IEnumerable<SelectListItem> States { get; set; }
 
-        [Display(Name = "Ciuadad")]
-        [Range(1, int.MaxValue, ErrorMessage = "Debes de seleccionar una ciudad.")]
+        [Display(Name = "Ciudad")]
         public int CityId { get; set; }
 
         public IEnumerable<SelectListItem> Cities { get; set; }
