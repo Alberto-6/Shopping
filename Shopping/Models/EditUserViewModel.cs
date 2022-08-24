@@ -49,17 +49,16 @@ namespace Shopping.Models
         public IFormFile ImageFile { get; set; }
 
         [Display(Name = "País")]
-        [Range(1, int.MaxValue, ErrorMessage = "Debes de seleccionar un país.")]
         public int CountryId { get; set; }
 
         public IEnumerable<SelectListItem> Countries { get; set; }
 
-        [Display(Name = "Departmento/Estado")]
+       // [Display(Name = "Departmento/Estado")]
         public int StateId { get; set; }
 
         public IEnumerable<SelectListItem> States { get; set; }
 
-        [Display(Name = "Ciudad")]
+       // [Display(Name = "Ciudad")]
         public int CityId { get; set; }
 
         public IEnumerable<SelectListItem> Cities { get; set; }

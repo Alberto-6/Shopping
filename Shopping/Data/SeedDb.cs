@@ -25,7 +25,7 @@ namespace Shopping.Data
             await CheckCategoriesAsync();
             await CheckCountriesAsync();
             await CheckRolesAsync();
-            await CheckUserAsync("1010", "Juan", "Zuluaga","zulu@yopmail.com", "322 311 4620", "Calle Luna Calle Sol", UserType.Admin);
+            await CheckUserAsync("1010", "Juan", "Zuluaga", "zulu@yopmail.com", "322 311 4620", "Calle Luna Calle Sol", UserType.Admin);
             await CheckUserAsync("2020", "Jose", "Lima", "Joselito@yopmail.com", "221 223 445", "Calle Los Andes", UserType.User);
         }
 
@@ -56,6 +56,10 @@ namespace Shopping.Data
 
                 await _userHelper.AddUserAsync(user, "123456");
                 await _userHelper.AddUserToRoleAsync(user, userType.ToString());
+
+                string token = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
+                await _userHelper.ConfirmEmailAsync(user, token);
+
             }
 
             return user;

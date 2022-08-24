@@ -10,14 +10,14 @@ namespace Shopping.Data.Entities
     {
         public int Id { get; set; }
 
-        [Display(Name = "País")]
-        [MaxLength(50, ErrorMessage = "El campo {0} debe tener {1} caracteres")]
-        [Required(ErrorMessage = "El Campo [0] es obligatorio")]
+        //[Display(Name = "País")]
+        //[MaxLength(50, ErrorMessage = "El campo {0} debe tener {1} caracteres")]
+       
         public string Name { get; set; }
 
         public ICollection<State> States { get; set; }
 
-        [Display(Name = "Departamento/Estado")]
+       // [Display(Name = "Departamento/Estado")]
         public int StatesNumber => States == null ? 0 : States.Count;
     }
 }
