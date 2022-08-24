@@ -10,8 +10,8 @@ using Shopping.Data;
 namespace Shopping.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220819201001_Users")]
-    partial class Users
+    [Migration("20220824053345_DBUntilProducts")]
+    partial class DBUntilProducts
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -180,9 +180,7 @@ namespace Shopping.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("StateId")
                         .HasColumnType("int");
@@ -193,7 +191,7 @@ namespace Shopping.Migrations
 
                     b.HasIndex("Name", "StateId")
                         .IsUnique()
-                        .HasFilter("[StateId] IS NOT NULL");
+                        .HasFilter("[Name] IS NOT NULL AND [StateId] IS NOT NULL");
 
                     b.ToTable("Cities");
                 });
@@ -206,16 +204,89 @@ namespace Shopping.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasFilter("[Name] IS NOT NULL");
+
+                    b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("Shopping.Data.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<float>("Stock")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Countries");
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Shopping.Data.Entities.ProductCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ProductId", "CategoryId")
+                        .IsUnique()
+                        .HasFilter("[ProductId] IS NOT NULL AND [CategoryId] IS NOT NULL");
+
+                    b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("Shopping.Data.Entities.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<Guid>("ImageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("Shopping.Data.Entities.State", b =>
@@ -229,9 +300,7 @@ namespace Shopping.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -239,7 +308,7 @@ namespace Shopping.Migrations
 
                     b.HasIndex("Name", "CountryId")
                         .IsUnique()
-                        .HasFilter("[CountryId] IS NOT NULL");
+                        .HasFilter("[Name] IS NOT NULL AND [CountryId] IS NOT NULL");
 
                     b.ToTable("States");
                 });
@@ -400,6 +469,30 @@ namespace Shopping.Migrations
                     b.Navigation("State");
                 });
 
+            modelBuilder.Entity("Shopping.Data.Entities.ProductCategory", b =>
+                {
+                    b.HasOne("Shopping.Data.Entities.Category", "Category")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("Shopping.Data.Entities.Product", "Product")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Shopping.Data.Entities.ProductImage", b =>
+                {
+                    b.HasOne("Shopping.Data.Entities.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Shopping.Data.Entities.State", b =>
                 {
                     b.HasOne("Shopping.Data.Entities.Country", "Country")
@@ -418,9 +511,21 @@ namespace Shopping.Migrations
                     b.Navigation("City");
                 });
 
+            modelBuilder.Entity("Shopping.Data.Entities.Category", b =>
+                {
+                    b.Navigation("ProductCategories");
+                });
+
             modelBuilder.Entity("Shopping.Data.Entities.Country", b =>
                 {
                     b.Navigation("States");
+                });
+
+            modelBuilder.Entity("Shopping.Data.Entities.Product", b =>
+                {
+                    b.Navigation("ProductCategories");
+
+                    b.Navigation("ProductImages");
                 });
 
             modelBuilder.Entity("Shopping.Data.Entities.State", b =>
