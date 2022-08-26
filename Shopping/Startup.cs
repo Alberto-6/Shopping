@@ -58,6 +58,7 @@ namespace Shopping
             services.AddScoped<ICombosHelper, CombosHelper>();
             services.AddScoped<IBlobHelper, BlobHelper>();
             services.AddScoped<IMailHelper, MailHelper>();
+            services.AddScoped<IOrdersHelper, OrdersHelper>();
             services.AddRazorPages();
 
         }
