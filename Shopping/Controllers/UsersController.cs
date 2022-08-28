@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Shopping.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    //[Authorize]
     public class UsersController : Controller
     {
         private readonly DataContext _context;

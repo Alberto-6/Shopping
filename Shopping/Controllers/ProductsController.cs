@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Shopping.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize]
     public class ProductsController : Controller
     {
         private readonly DataContext _context;
@@ -48,7 +48,7 @@ namespace Shopping.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateProductViewModel model)
         {
-            if (ModelState.IsValid)
+          //  if (ModelState.IsValid)
             {
                 Guid imageId = Guid.Empty;
                 if (model.ImageFile != null)

@@ -12,7 +12,7 @@ using Shopping.Models;
 
 namespace Shopping.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    //[Authorize]
     public class CountriesController : Controller
     {
         private readonly DataContext _context;

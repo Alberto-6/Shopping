@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Shopping.Controllers
 {
 
-    [Authorize(Roles = "Admin")]
+    //[Authorize]
     public class CategoriesController : Controller
     {
         private readonly DataContext _context;
@@ -26,7 +26,7 @@ namespace Shopping.Controllers
             return View(await _context.Categories.ToListAsync());
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize]
         public IActionResult Create()
         {
             return View();

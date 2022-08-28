@@ -25,13 +25,12 @@ namespace Shopping.Data
         public async Task SeedAsync()
         {
             await _context.Database.EnsureCreatedAsync();
-            await CheckCategoriesAsync();
+            CheckCategories();
             await CheckCountriesAsync();
             await CheckRolesAsync();
             await CheckUserAsync("1010", "Juan", "Zuluaga", "zulu@yopmail.com", "322 311 4620", "Calle Luna Calle Sol", UserType.Admin);
-            await CheckUserAsync("2020", "Ledys", "Bedoya", "ledys@yopmail.com", "322 311 4620", "Calle Luna Calle Sol", UserType.Admin);
-            await CheckUserAsync("3030", "Brad", "Pitt", "brad@yopmail.com", "322 311 4620", "Calle Luna Calle Sol", UserType.User);
-            await CheckUserAsync("4040", "Angelina", "Jolie", "angelina@yopmail.com", "322 311 4620", "Calle Luna Calle Sol", UserType.User);
+            await CheckUserAsync("3030", "Brad", "Pitt", "brad@yopmail.com", "322 311 4620", "Ave. Siempre viva", UserType.User);
+
 
         }
 
@@ -46,7 +45,7 @@ namespace Shopping.Data
                 await AddProductAsync("Bicicleta Ribble", 12000000M, 6F, new List<string>() { "Deportes" }, new List<string>() { "bicicleta_ribble.png" });
                 await AddProductAsync("Camisa Cuadros", 56000M, 24F, new List<string>() { "Ropa" }, new List<string>() { "camisa_cuadros.png" });
                 await AddProductAsync("Casco Bicicleta", 820000M, 12F, new List<string>() { "Deportes" }, new List<string>() { "casco_bicicleta.png", "casco.png" });
-                await AddProductAsync("iPad", 2300000M, 6F, new List<string>() { "Tecnología", "Apple" }, new List<string>() { "ipad.png" });
+                await AddProductAsync("iPad", 2300000M, 6F, new List<string>() { "Tecnología", "Apple" }, new List<string>() { "Xioami-Redmi-10.png" });
                 await AddProductAsync("iPhone 13", 5200000M, 6F, new List<string>() { "Tecnología", "Apple" }, new List<string>() { "iphone13.png", "iphone13b.png", "iphone13c.png", "iphone13d.png" });
                 await AddProductAsync("Mac Book Pro", 12100000M, 6F, new List<string>() { "Tecnología", "Apple" }, new List<string>() { "mac_book_pro.png" });
                 await AddProductAsync("Mancuernas", 370000M, 12F, new List<string>() { "Deportes" }, new List<string>() { "mancuernas.png" });
@@ -79,13 +78,13 @@ namespace Shopping.Data
                 ProductImages = new List<ProductImage>()
             };
 
-            foreach (string? category in categories)
+            foreach (string category in categories)
             {
                 prodcut.ProductCategories.Add(new ProductCategory { Category = await _context.Categories.FirstOrDefaultAsync(c => c.Name == category) });
             }
 
 
-            foreach (string? image in images)
+            foreach (string image in images)
             {
                 Guid imageId = await _blobHelper.UploadBlobAsync($"{Environment.CurrentDirectory}\\wwwroot\\images\\products\\{image}", "products");
                 prodcut.ProductImages.Add(new ProductImage { ImageId = imageId });
@@ -269,7 +268,7 @@ namespace Shopping.Data
         }
 
 
-        private async Task CheckCategoriesAsync()
+        private void CheckCategories()
         {
             if (!_context.Categories.Any())
             {
@@ -287,9 +286,9 @@ namespace Shopping.Data
 
         }
 
-   
 
-      
-        }
+
+
+    }
     }
 

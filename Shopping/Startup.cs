@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Shopping.Helpers;
 using Shopping.Data.Entities;
 using Microsoft.AspNetCore.Identity;
+using Vereyon.Web;
 
 namespace Shopping
 {
@@ -54,6 +55,7 @@ namespace Shopping
 
 
             services.AddTransient<SeedDb>();
+            services.AddFlashMessage();
             services.AddScoped<IUserHelper, UserHelper>();
             services.AddScoped<ICombosHelper, CombosHelper>();
             services.AddScoped<IBlobHelper, BlobHelper>();
