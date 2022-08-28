@@ -8,12 +8,12 @@ Este proyecto fue creado pensando en resolver una problematica de la vida real, 
 
 -Instale Visual Studio
 
-**Aca puedes Instalar Visual studio ya sea para Mac o Windows**
+**Aca puedes Instalar Visual studio ya sea para Mac o Windows** :crown:
 
 [![Visual-Studio.png](https://i.postimg.cc/fRJKnLFx/Visual-Studio.png)](https://postimg.cc/nXf7qHnz)
 
 
-**Durante la Instalacion debes selecionar esta opcion**
+**Durante la Instalacion debes selecionar esta opcion** :trophy:
 
 [![Insta.png](https://i.postimg.cc/3J6GGZSv/Insta.png)](https://postimg.cc/tY37QFHq)
 
@@ -26,23 +26,22 @@ Este proyecto fue creado pensando en resolver una problematica de la vida real, 
 
 ### Pre-requisitos 📋
 
-SDK de .NET 6.0
-
 ```
-Da un ejemplo
+SDK de .NET 6.0
 ```
 
 ### Instalación 🔧
 
 **Inicie el Proyecto con el siguiente comando**
 
-
+```
 https://github.com/Alberto-6/Shopping.git
+```
 
 **Abra el pryecto con visual studio**
 
 [![screan1.png](https://i.postimg.cc/3w9JX88c/screan1.png)](https://postimg.cc/yJgHBzSm)
-_Y repite_
+
 
 
 **Esta es una vista de nuestra App web**
@@ -66,7 +65,7 @@ _Y repite_
 
 [![image7.png](https://i.postimg.cc/63CC04Ph/image7.png)](https://postimg.cc/vgH18Tb1)
 
-**Aqui esta la carpeta controllers que son los que guardaran mi logica para manejar  las opciones que estaremos viendo en la app**
+**Aqui esta la carpeta controllers que son los que guardaran mi logica para manejar  las opciones que estaremos viendo en la app** 	:ledger:
 
 [![image8.png](https://i.postimg.cc/509fPZ7k/image8.png)](https://postimg.cc/XZhMqD0w)
 
@@ -90,7 +89,7 @@ _Y repite_
 
 
 
-##Contribuyendo 🖇️
+## Contribuyendo 🖇️
 
 **Alberto-6 https://github.com/Alberto-6**
 
@@ -102,16 +101,13 @@ _Y repite_
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+**Juan Alberto Moreno - All license reserved**
 
 ## Expresiones de Gratitud 🎁
 
 * Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
-
+* Se Feliz.
 
 
 ---
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+⌨️ con ❤️ por [Alberto6](https://github.com/Alberto-6) 😊
