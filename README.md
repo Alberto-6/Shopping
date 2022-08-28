@@ -78,32 +78,27 @@ _Y repite_
 
 ## Construido con 🛠️
 
-[JavaSacript]
-[C Sharp] ![image](https://user-images.githubusercontent.com/66850211/187095866-3ee2895f-1bc1-4a9c-b716-0b912c54102c.png)![image](https://user-images.githubusercontent.com/66850211/187096042-dc1b7e83-3bd2-4e4d-80f7-bca9b7e0fc7c.png
+[C Sharp] ![image](https://user-images.githubusercontent.com/66850211/187095866-3ee2895f-1bc1-4a9c-b716-0b912c54102c.png)
 
+[JavaScript] ![image](https://user-images.githubusercontent.com/66850211/187096042-dc1b7e83-3bd2-4e4d-80f7-bca9b7e0fc7c.png)
+
+[HTML] ![image](https://user-images.githubusercontent.com/66850211/187096207-9f873358-3ed8-418a-a2bf-0654c9ced008.png)
+
+[BootStrap] ![image](https://user-images.githubusercontent.com/66850211/187096264-8e2567be-9558-446b-9d4c-d5b0d9d5f41c.png)
+
+[CSS] ![image](https://user-images.githubusercontent.com/66850211/187096309-e7334ae7-25a2-45d5-86b6-53bf321aa5cd.png)
 
 
 
 ##Contribuyendo 🖇️
 
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
+**Alberto-6 https://github.com/Alberto-6**
 
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
 
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
+**Alberto-6**
 
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
 
 ## Licencia 📄
 
