@@ -39,51 +39,52 @@ Da un ejemplo
 
 https://github.com/Alberto-6/Shopping.git
 
-```
-Da un ejemplo
-```
+**Abra el pryecto con visual studio**
 
+[![screan1.png](https://i.postimg.cc/3w9JX88c/screan1.png)](https://postimg.cc/yJgHBzSm)
 _Y repite_
 
-```
-hasta finalizar
-```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+**Esta es una vista de nuestra App web**
 
-## Ejecutando las pruebas ⚙️
+[![Image2.png](https://i.postimg.cc/QxbT43dc/Image2.png)](https://postimg.cc/jLD22BNj)
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+**Aqui puedes ver, agregar, editar y borrar los productos en stock**
 
-### Analice las pruebas end-to-end 🔩
+[![Image3.png](https://i.postimg.cc/500703KR/Image3.png)](https://postimg.cc/hJkbZ9BL)
 
-_Explica que verifican estas pruebas y por qué_
 
-```
-Da un ejemplo
-```
+**Aqui puedes agregar, modificar, y elima las categorias de los productos**
 
-### Y las pruebas de estilo de codificación ⌨️
+[![Image4.png](https://i.postimg.cc/CKm0XcfP/Image4.png)](https://postimg.cc/CZB9fH7k)
 
-_Explica que verifican estas pruebas y por qué_
+**Aqui puedes ver mas detealles de cada articulo asi como su categoria asignada**
 
-```
-Da un ejemplo
-```
+[![image5.png](https://i.postimg.cc/NjX7dnZt/image5.png)](https://postimg.cc/Js1knp1Y)
+
+**Este el es layout, aqui esta la logica para que se vean las opcion en la barra**
+
+[![image7.png](https://i.postimg.cc/63CC04Ph/image7.png)](https://postimg.cc/vgH18Tb1)
+
+**Aqui esta la carpeta controllers que son los que guardaran mi logica para manejar  las opciones que estaremos viendo en la app**
+
+[![image8.png](https://i.postimg.cc/509fPZ7k/image8.png)](https://postimg.cc/XZhMqD0w)
 
 ## Despliegue 📦
 
-_Agrega notas adicionales sobre como hacer deploy_
+**Para correr el proecto hacimos click en el triagulo verde y corremos con nuestro buscador favorito**
+
+[![Image6.png](https://i.postimg.cc/65cytfRZ/Image6.png)](https://postimg.cc/MvcWYR9Z)
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+[JavaSacript]
+[C Sharp] ![image](https://user-images.githubusercontent.com/66850211/187095866-3ee2895f-1bc1-4a9c-b716-0b912c54102c.png)![image](https://user-images.githubusercontent.com/66850211/187096042-dc1b7e83-3bd2-4e4d-80f7-bca9b7e0fc7c.png
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
 
-## Contribuyendo 🖇️
+
+
+##Contribuyendo 🖇️
 
 Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
 
